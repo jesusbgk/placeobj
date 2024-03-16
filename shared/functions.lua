@@ -33,8 +33,14 @@ Framework = {
 		end,
 
 		CountItem = function(source,Item)
+			local Amount = 0
+			local Player = QBCore.Functions.GetPlayer(source)
 			local Consult = Player.Functions.GetItemByName(Item)
-			return Consult.amount or 0
+			if Consult and Consult.amount then
+				Amount = Consult.amount
+			end
+
+			Return Amount
 		end,
 
 		Connect = function()
@@ -76,9 +82,14 @@ Framework = {
 		end,
 
 		CountItem = function(source,Item)
+			local Amount = 0
 			local Player = ESX.GetPlayerFromId(source)
 			local Consult = Player.getInventoryItem(Item)
-			return Consult.count or 0
+			if Consult and Consult.count then
+				Amount = Consult.count
+			end
+
+			return Amount
 		end,
 
 		Connect = function()

@@ -23,15 +23,9 @@ local function AddObject(Name,Prop,Number)
             DisableControlAction(0,175,true)
             DisableControlAction(0,174,true)
             
-            local Hash = joaat(Prop)
-            
             if not Object then
-                if not HasModelLoaded(Hash) then
-                    RequestModel(Hash)
-                    Wait(10)
-                end
-
-                Object = CreateObject(Hash,GetCameraRayCastPosition(10),false,true,false)
+                lib.requestModel(Prop)
+                Object = CreateObjectNoOffset(Prop,GetCameraRayCastPosition(10),false,false,false)
                 SetEntityAlpha(Object,102,1)
                 SetEntityCollision(Object,false,false)
                 PlaceObjectOnGroundProperly(Object)
@@ -75,7 +69,7 @@ local function AddObject(Name,Prop,Number)
                         Object = nil
                     end
 
-                    if not DoesObjectOfTypeExistAtCoords(x,y,z,1.0,Hash,true) then
+                    if not DoesObjectOfTypeExistAtCoords(x,y,z,1.0,joaat(Prop),true) then
                         TriggerServerEvent("placeobj:server:AddObject",ObjectData)
                     else
                         Notify("warning","Objeto próximo encontrado.",5000)
@@ -271,17 +265,10 @@ CreateThread(function()
             local Object = v
             local Distance = #(Coords - vec3(Object.coords.x,Object.coords.y,Object.coords.z))
             if Distance <= 100 then
-                if not Object.active then
-                    Object.active = true
+                if not InitObjects[k] then
+                    lib.requestModel(Object.model)
 
-                    if not HasModelLoaded(Object.model) then
-                        RequestModel(Object.model)
-                        while not HasModelLoaded(Object.model) do
-                            Wait(5)
-                        end
-                    end
-
-                    InitObjects[k] = CreateObject(Object.model,Object.coords.x,Object.coords.y,Object.coords.z,false,true)
+                    InitObjects[k] = CreateObjectNoOffset(Object.model,Object.coords.x,Object.coords.y,Object.coords.z,false,false,false)
 
                     while not DoesEntityExist(InitObjects[k]) do
                         Wait(5)
@@ -300,7 +287,7 @@ CreateThread(function()
                     end
                 end
             else
-                if Object.active then
+                if InitObjects[k] then
                     if Object.entity and DoesEntityExist(Object.entity) then
                         if Target then
                             exports.ox_target:removeLocalEntity(Object.entity)
@@ -311,7 +298,7 @@ CreateThread(function()
                         DeleteEntity(Object.entity)
                     end
                     
-                    Object.active = false
+                    InitObjects[k] = nil
                 end
             end
         end

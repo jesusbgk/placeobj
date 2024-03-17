@@ -65,7 +65,7 @@ RegisterNetEvent("placeobj:server:AddObject",function(Object)
         owner = Identifier
     }
 
-    TriggerClientEvent("placeobj:client:UpdateObject",src,ActiveObjects[Object.id])
+    TriggerClientEvent("placeobj:client:UpdateObject",-1,ActiveObjects[Object.id])
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PLACEOBJ:SERVER:CANCEL

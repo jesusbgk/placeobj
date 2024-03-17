@@ -40,7 +40,7 @@ Framework = {
 				Amount = Consult.amount
 			end
 
-			Return Amount
+			return Amount
 		end,
 
 		Connect = function()

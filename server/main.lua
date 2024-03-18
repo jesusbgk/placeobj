@@ -4,6 +4,20 @@
 local ActiveObjects = {}
 local WaitResponse = {}
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ONRESOURCESTART
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onResourceStart",function(Resource)
+	if (GetCurrentResourceName() == Resource) then
+        local LoadFile = LoadResourceFile(GetCurrentResourceName(),"./objects.json")
+        if LoadFile then
+            local Objects = json.decode(LoadFile)
+            if type(Objects) == "table" then
+                ActiveObjects = Objects
+            end
+        end
+	end 
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- PLACEOBJ
 -----------------------------------------------------------------------------------------------------------------------------------------
 function PlaceObj(source,Item)
@@ -65,6 +79,7 @@ RegisterNetEvent("placeobj:server:AddObject",function(Object)
         owner = Identifier
     }
 
+    SaveResourceFile(GetCurrentResourceName(),"objects.json",json.encode(ActiveObjects,{ indent = true }),-1)
     TriggerClientEvent("placeobj:client:UpdateObject",-1,ActiveObjects[Object.id])
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -90,6 +105,7 @@ RegisterNetEvent("placeobj:server:RemoveObject",function(Number)
     end
 
     ActiveObjects[Number] = nil
+    SaveResourceFile(GetCurrentResourceName(),"objects.json",json.encode(ActiveObjects,{ indent = true }),-1)
     TriggerClientEvent("placeobj:client:RemoveObject",-1,Number)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

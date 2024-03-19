@@ -8,8 +8,8 @@ local vRPFramework = {
     ["vrpex"] = true
 }
 
-if Config.Framework == "qb" then
-    QBCore = exports.qb-core:GetCoreObject()
+if Config.Framework == "qbcore" then
+    QBCore = exports["qb-core"]:GetCoreObject()
 elseif Config.Framework == "esx" then
     ESX = exports.es_extended:getSharedObject()
 elseif vRPFramework[Config.Framework] then

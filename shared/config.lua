@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 Config = {}
 
-Config.Framework = "flexin" -- (qb, esx, flexin, creative_network, creative_v5, vrpex)
+Config.Framework = "flexin" -- (qbcore, esx, flexin, creative_network, creative_v5, vrpex)
 Config.Command = "placeobj" -- comando para adicionar algum objeto ao servidor
 Config.Perm = "Admin" -- permissão para adicionar algum objeto ao servidor coloque false para deixar sem verificação de permissão
 Config.RemoveItem = true -- remover item para colocar o prop coloque false para não remover

@@ -33,10 +33,16 @@ local function AddObject(Name,Prop,Number)
                 SetEntityCoords(Object,GetCameraRayCastPosition(10),0,0,0,false)
                 PlaceObjectOnGroundProperly(Object)
 
-                DwText("~g~RIGHT MOUSE BUTTON~w~  CANCELAR",4,0.015,0.83,0.38,255,255,255,255)
-                DwText("~g~LEFT MOUSE BUTTON~w~  COLOCAR OBJETO",4,0.015,0.86,0.38,255,255,255,255)
-                DwText("~y~SCROLL UP~w~  GIRA ESQUERDA",4,0.015,0.89,0.38,255,255,255,255)
-                DwText("~y~SCROLL DOWN~w~  GIRA DIREITA",4,0.015,0.92,0.38,255,255,255,255)
+                if Config.oxTextUI.activate then
+                    if Config.oxTextUI.text then
+                        lib.showTextUI(Config.oxTextUI.text)
+                    end
+                else
+                    DwText("~g~RIGHT MOUSE BUTTON~w~  CANCELAR",4,0.015,0.83,0.38,255,255,255,255)
+                    DwText("~g~LEFT MOUSE BUTTON~w~  COLOCAR OBJETO",4,0.015,0.86,0.38,255,255,255,255)
+                    DwText("~y~SCROLL UP~w~  GIRA ESQUERDA",4,0.015,0.89,0.38,255,255,255,255)
+                    DwText("~y~SCROLL DOWN~w~  GIRA DIREITA",4,0.015,0.92,0.38,255,255,255,255)
+                end
 
                 if IsDisabledControlPressed(0,180) then
                     SetEntityHeading(Object,GetEntityHeading(Object) + 2)
@@ -71,6 +77,9 @@ local function AddObject(Name,Prop,Number)
 
                     if not DoesObjectOfTypeExistAtCoords(x,y,z,1.0,joaat(Prop),true) then
                         TriggerServerEvent("placeobj:server:AddObject",ObjectData)
+                        if Config.oxTextUI.activate then
+                            lib.hideTextUI()
+                        end
                     else
                         Notify("warning","Objeto próximo encontrado.",5000)
                     end
@@ -89,6 +98,9 @@ local function AddObject(Name,Prop,Number)
                 end
 
                 TriggerServerEvent("placeobj:server:Cancel",Number)
+                if Config.oxTextUI.activate then
+                    lib.hideTextUI()
+                end
             end
 
             Wait(0)

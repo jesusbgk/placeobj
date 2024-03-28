@@ -8,11 +8,6 @@ Config.Command = "placeobj" -- comando para adicionar algum objeto ao servidor
 Config.Perm = "Admin" -- permissão para adicionar algum objeto ao servidor coloque false para deixar sem verificação de permissão
 Config.RemoveItem = true -- remover item para colocar o prop coloque false para não remover
 
-Config.oxTextUI = {
-	activate = true,
-	text = "Right Mouse Button - Cancel  \n  Left Mouse Button - Place  \n  Scroll - Turn"
-}
-
 Config.PropList = {
     ["engine"] = {
 		label = "Motor",

@@ -34,18 +34,6 @@ function GetCameraRayCastPosition(distance)
     return c
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
--- DWTEXT
------------------------------------------------------------------------------------------------------------------------------------------
-function DwText(Text,Font,x,y,Scale,r,g,b,a)
-	SetTextFont(Font)
-	SetTextScale(Scale,Scale)
-	SetTextColour(r,g,b,a)
-	SetTextOutline()
-	SetTextEntry("STRING")
-	AddTextComponentString(Text)
-	DrawText(x,y)
-end
------------------------------------------------------------------------------------------------------------------------------------------
 -- NOTIFY
 -----------------------------------------------------------------------------------------------------------------------------------------
 function Notify(Type,Message,Duration,Title,Id,Position,Icon,IconColor)

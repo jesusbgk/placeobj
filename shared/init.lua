@@ -18,6 +18,27 @@ elseif vRPFramework[Config.Framework] then
     vRP = Proxy.getInterface("vRP")
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- OX_INVENTORY
+-----------------------------------------------------------------------------------------------------------------------------------------
+local ox_inventory = GetResourceState("ox_inventory"):find("start")
+if ox_inventory then
+    Framework[Config.Framework].AddItem = function(source,Item,Amount)
+        return exports.ox_inventory:AddItem(source,Item,Amount)
+    end
+
+    Framework[Config.Framework].RemoveItem = function(source,Item,Amount)
+        return exports.ox_inventory:RemoveItem(source,Item,Amount)
+    end
+
+    Framework[Config.Framework].CanCarryItem = function(source,Item,Amount)
+        return exports.ox_inventory:CanCarryItem(source,Item,Amount)
+    end
+
+    Framework[Config.Framework].CountItem = function(source,Item)
+        return exports.ox_inventory:Search(source,"count",Item)
+    end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCALE
 -----------------------------------------------------------------------------------------------------------------------------------------
 lib.locale()

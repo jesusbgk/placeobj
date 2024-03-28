@@ -116,3 +116,5 @@ RegisterNetEvent("placeobj:server:Connect",function(source)
 end)
 
 Functions.Connect()
+
+lib.versionCheck("jesusbgk/placeobj")

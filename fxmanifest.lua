@@ -5,7 +5,7 @@ lua54 "yes"
 name "placeobj"
 description "placeobj"
 author "JesusBGK"
-version "1.0.4"
+version "1.0.5"
 
 shared_scripts {
 	"@ox_lib/init.lua",

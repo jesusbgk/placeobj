@@ -15,6 +15,9 @@ AddEventHandler("onResourceStart",function(Resource)
                 ActiveObjects = Objects
             end
         end
+
+        Wait(1000)
+        TriggerClientEvent("placeobj:client:SyncObjects",-1,ActiveObjects)
 	end 
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

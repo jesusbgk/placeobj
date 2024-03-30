@@ -331,6 +331,25 @@ CreateThread(function()
     })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- ONRESOURCESTOP
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("onResourceStop",function(Resource)
+    if Resource == GetCurrentResourceName() then
+        for k,v in pairs(ObjectList) do
+            local Object = v
+            if Object.entity and DoesEntityExist(Object.entity) then
+                if Target then
+                    exports.ox_target:removeLocalEntity(Object.entity)
+                else
+                    RemovePoint(Object.id)
+                end
+
+                DeleteEntity(Object.entity)
+            end
+        end
+    end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- OPEN
 -----------------------------------------------------------------------------------------------------------------------------------------
 local function Open()

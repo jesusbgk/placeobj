@@ -44,7 +44,7 @@ Framework = {
 		end,
 
 		Connect = function()
-			AddEventHandler("QBCore:Server:OnPlayerLoaded",function()
+			RegisterNetEvent("QBCore:Server:OnPlayerLoaded",function()
 				local src = source
                 TriggerEvent("placeobj:server:Connect",src)
             end)
@@ -93,7 +93,7 @@ Framework = {
 		end,
 
 		Connect = function()
-			AddEventHandler("esx:playerLoaded",function()
+			RegisterNetEvent("esx:playerLoaded",function()
 				local src = source
                 TriggerEvent("placeobj:server:Connect",src)
             end)
@@ -126,7 +126,7 @@ Framework = {
 		end,
 
 		Connect = function()
-			AddEventHandler("Connect",function(Passport,source)
+			RegisterNetEvent("Connect",function(Passport,source)
                 TriggerEvent("placeobj:server:Connect",source)
             end)
 		end
@@ -162,7 +162,7 @@ Framework = {
 		end,
 
 		Connect = function()
-			AddEventHandler("Connect",function(Passport,source)
+			RegisterNetEvent("Connect",function(Passport,source)
                 TriggerEvent("placeobj:server:Connect",source)
             end)
 		end
@@ -198,7 +198,7 @@ Framework = {
 		end,
 
 		Connect = function()
-			AddEventHandler("playerConnect",function(Passport,source)
+			RegisterNetEvent("playerConnect",function(Passport,source)
                 TriggerEvent("placeobj:server:Connect",source)
             end)
 		end
@@ -234,7 +234,7 @@ Framework = {
 		end,
 
 		Connect = function()
-			AddEventHandler("playerJoining",function()
+			RegisterNetEvent("playerJoining",function()
 				local src = source
                 TriggerEvent("placeobj:server:Connect",src)
             end)

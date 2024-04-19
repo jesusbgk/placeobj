@@ -5,8 +5,8 @@ Config = {}
 
 Config.Framework = "flexin" -- (qbcore, esx, flexin, creative_network, creative_v5, vrpex)
 Config.Command = "placeobj" -- comando para adicionar algum objeto ao servidor
-Config.Perm = "Admin" -- permissão para adicionar algum objeto ao servidor coloque false para deixar sem verificação de permissão
-Config.RemoveItem = true -- remover item para colocar o prop coloque false para não remover
+Config.Perm = false -- permissão para adicionar algum objeto ao servidor coloque false para deixar sem verificação de permissão
+Config.RemoveItem = false -- remover item para colocar o prop coloque false para não remover
 
 Config.PropList = {
     ["engine"] = {

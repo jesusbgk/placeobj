@@ -93,9 +93,8 @@ Framework = {
 		end,
 
 		Connect = function()
-			RegisterNetEvent("esx:playerLoaded",function()
-				local src = source
-                TriggerEvent("placeobj:server:Connect",src)
+			RegisterNetEvent("esx:playerLoaded",function(playerId,xPlayer)
+                TriggerEvent("placeobj:server:Connect",playerId)
             end)
 		end
 	},

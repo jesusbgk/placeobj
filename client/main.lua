@@ -206,7 +206,7 @@ local function RegisterContextMenu(Object)
     end
 
     lib.registerContext({
-        id = Object.name.."_menu",
+        id = Object.name.."_"..Object.id.."_menu"
         title = "Place Objects",
         options = Options
     })
@@ -239,6 +239,7 @@ function RemovePoint(Id)
     local Point = Points[Id]
     Point:remove()
     Points[Id] = nil
+    Selected = nil
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- INTERACT
@@ -250,7 +251,7 @@ local Interact = lib.addKeybind({
     onReleased = function(self)
         if not Selected then return end
 
-        lib.showContext(Selected.name.."_menu")
+        lib.showContext(Selected.name.."_"..Selected.id.."_menu")
     end
 })
 -----------------------------------------------------------------------------------------------------------------------------------------

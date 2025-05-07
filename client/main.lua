@@ -206,7 +206,7 @@ local function RegisterContextMenu(Object)
     end
 
     lib.registerContext({
-        id = Object.name.."_"..Object.id.."_menu"
+        id = Object.name.."_"..Object.id.."_menu",
         title = "Place Objects",
         options = Options
     })
